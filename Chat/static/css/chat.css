@@ -1,0 +1,87 @@
+*{
+	 padding : 0;
+	 margin : 0;
+	 border : 0;
+}
+body{
+	 background-image : url('../images/bg.png');
+	 background-attachment : fixed;
+	 background-size : 100% auto;
+}
+
+
+.blended_grid{
+display : block;
+width : 900px;
+overflow : auto;
+margin : 30px auto 0 auto;
+}
+
+.pageHeader{
+background-color : rgba(137,205,255,0.99);
+float : left;
+clear : none;
+height : 200px;
+width : 900px;
+}
+
+.pageRightMenu{
+background-color : rgba(67,144,255,0.99);
+overflow: scroll;
+float : left;
+clear : none;
+height : 600px;
+width : 200px;
+}
+
+
+.pageLeftMenu{
+background-color : rgba(67,144,255,0.99);
+overflow: scroll;
+float : left;
+clear : none;
+height : 600px;
+width : 200px;
+}
+
+.pageContent{
+background-color : rgba(255,255,209,0.99);
+overflow: scroll;
+float : left;
+clear : none;
+height : 600px;
+width : 500px;
+}
+
+.pageFooterLeft{
+background-color : rgba(196,204,229,0.99);
+float : left;
+clear : none;
+height :50px;
+width : 450px;
+}
+.pageFooterLeftMiddle{
+background-color : rgba(196,204,229,0.99);
+overflow-y: scroll;
+float : left;
+clear : none;
+height :50px;
+width : 450px;
+}
+
+.pageFooterRight{
+background-color : rgba(196,204,229,0.99);
+float : left;
+clear : none;
+height : 50px;
+width : 450px;
+}
+
+.pageFooterRightMiddle{
+background-color : rgba(196,204,229,0.99);
+float : left;
+clear : none;
+height : 50px;
+width : 450px;
+}
+

@@ -1,0 +1,92 @@
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link href="../static/css/chat.css" rel="stylesheet" type="text/css">
+	<title>CHAT 2017</title>
+	<meta name="description" content="Write some words to describe your html page">
+</head>
+	<body>
+		<div class="blended_grid">
+			<div class="pageHeader"> <a href="/logout"><img src="../static/images/LogoSampl.jpg" width="200" height="199" alt=""/>Salir </a><br/>
+				</div>
+						<div class="pageLeftMenu">
+
+							<body>
+								{% block content %}
+
+	<h3>Usuarios</h3>
+									{% for usuario in usuarios %}
+								<img src='../static/images/{{usuario[5]}}.png' /><a href="/enlinea/{{usuario[2]}}&{{usuario[3]}}">{{usuario[4]}} </a><br/>
+									{% endfor %}
+								{% endblock %}
+							</body>
+
+						</div>
+						<div class="pageContent">
+							<body>
+								{% block content1 %}
+									{% for mensaje in mensajes %}
+										<tr><td>{{mensaje[3]}}</td></tr> <br/>
+									{% endfor %}
+								{% endblock %}
+							</body>
+						</div>
+
+						<div class="pageRightMenu">
+							<body>
+								{% block content2 %}
+
+									<h3>Solicitudes</h3>
+									{% for solicitud in solicitudes %}
+										<a href="/relacion/{{solicitud[0]}}&{{solicitud[2]}}">{{solicitud[2]}} </a><br/>
+									{% endfor %}
+								{% endblock %}
+							</body>
+						</div>
+
+
+
+
+				<div class="pageFooterLeft">
+					<h3>Mensajes</h3>
+					<form action="/mensaje" method="POST">
+						<input type="text" class="mensaje-field" size="50" value="" placeholder="mensaje" name="mensaje">
+				    	<input type="submit" value="enviar" class="btn btn-primary btn-large btn-block" >
+					</form>
+				</div>
+
+
+				<div class="pageFooterRight">
+					<h3>Solicitud</h3>
+					<form action="/solicitud" method="POST">
+						<input type="text" class="mensaje-field" size="35" value="" placeholder="correo" name="correo">
+				    	<input type="submit" value="enviar" class="btn btn-primary btn-large btn-block" >
+					</form>
+				</div>
+
+				<div class="pageFooterLeftMiddle">
+					<h3>Archivos</h3>
+				<body>
+					{% block content3 %}
+						{% for archivo in archivos %}
+							<a href="../static/{{archivo[2]}}/{{archivo[3]}}">{{archivo[3]}} </a><br/>
+						{% endfor %}
+					{% endblock %}
+				</body>
+				</div>
+
+
+
+				<div class="pageFooterRightMiddle">
+					<h3>Archivo</h3>
+					<form action="/subir" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file" accept="image/*,audio/*,video/*,.xlsx,.xls,.doc,.docx,.ppt,.pptx,.txt,.pdf" multiple>
+					<input type="submit" value="cargar" id="btn btn-primary btn-large btn-block">
+					</form>
+				</div>
+
+		</div>
+	</body>
+</html>
+
+
+
