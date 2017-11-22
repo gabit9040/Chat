@@ -1,0 +1,60 @@
+CREATE
+    TABLE usuario
+    (
+        id_usuario SERIAL NOT NULL,
+        nombre CHARACTER VARYING(50) NOT NULL,
+        correo CHARACTER VARYING(25) NOT NULL,
+        clave CHARACTER VARYING(10) NOT NULL,
+        enlinea CHARACTER VARYING(7) DEFAULT 'offline'::CHARACTER VARYING NOT NULL,
+        PRIMARY KEY (id_usuario),
+        CONSTRAINT ix1 UNIQUE (correo)
+    )
+
+
+CREATE
+    TABLE relacion
+    (
+        id_relacion SERIAL NOT NULL,
+        id_usuario_a BIGINT NOT NULL,
+        id_usuario_b BIGINT NOT NULL,
+        PRIMARY KEY (id_relacion),
+        CONSTRAINT fk1 FOREIGN KEY (id_usuario_a) REFERENCES chat.usuario (id_usuario),
+        CONSTRAINT fk2 FOREIGN KEY (id_usuario_b) REFERENCES chat.usuario (id_usuario),
+        CONSTRAINT ix3 UNIQUE (id_usuario_a, id_usuario_b)
+    )
+
+CREATE
+    TABLE mensaje
+    (
+        id_mensaje SERIAL NOT NULL,
+        id_relacion BIGINT NOT NULL,
+        mensaje CHARACTER VARYING(255) NOT NULL,
+        PRIMARY KEY (id_mensaje),
+        CONSTRAINT fk1 FOREIGN KEY (id_relacion) REFERENCES chat.relacion (id_relacion)
+    )
+
+
+CREATE
+    TABLE archivo
+    (
+        id_archivo SERIAL NOT NULL,
+        id_relacion BIGINT NOT NULL,
+        path CHARACTER VARYING(255) NOT NULL,
+        nombre CHARACTER VARYING(255) NOT NULL,
+        PRIMARY KEY (id_archivo),
+        CONSTRAINT fk1 FOREIGN KEY (id_relacion) REFERENCES chat.relacion (id_relacion)
+    )
+
+
+CREATE
+    TABLE invitacion
+    (
+        id_invitacion SERIAL NOT
+        NULL,
+        correo_solicitud CHARACTER VARYING(25) NOT NULL,
+        correo_solicitante CHARACTER VARYING(25) NOT NULL,
+        PRIMARY KEY (id_invitacion),
+        CONSTRAINT ix2 UNIQUE (correo_solicitud, correo_solicitante)
+    )
+
+
